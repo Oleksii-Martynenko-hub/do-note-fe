@@ -105,7 +105,9 @@ export const postUserAsync = (): AsyncAction => async (dispatch, _, { mainApi })
 
     const user = { username: 'new' };
 
-    await mainApi.postUser(user);
+    const newUser = await mainApi.postUser(user);
+
+    console.log(newUser);
 
     dispatch(loginActions.setIsResolved());
     dispatch(userActions.setUserAvatar('userData'));
