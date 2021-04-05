@@ -1,32 +1,24 @@
 import { createSelector, Selector } from 'reselect';
-
 import { State } from '@/store';
 
-import { LoginState, UserI } from '@/store/reducers/login';
+const selectLoginReducer = (state: State) => state.loginReducer;
 
-const selectLogin = (state: State) => state.loginReducer;
-
-export const selectLoginState: Selector<State, LoginState> = createSelector(
-  selectLogin,
-  (loginState) => loginState,
-);
-
-export const selectLoginIsPending: Selector<State, boolean> = createSelector(
-  selectLogin,
+export const selectIsLoginPending: Selector<State, boolean> = createSelector(
+  selectLoginReducer,
   ({ isPending }) => isPending,
 );
 
-export const selectLoginIsResolved: Selector<State, boolean> = createSelector(
-  selectLogin,
+export const selectIsLoginResolved: Selector<State, boolean> = createSelector(
+  selectLoginReducer,
   ({ isResolved }) => isResolved,
 );
 
-export const selectLoginIsReject: Selector<State, boolean> = createSelector(
-  selectLogin,
+export const selectIsLoginRejected: Selector<State, boolean> = createSelector(
+  selectLoginReducer,
   ({ isRejected }) => isRejected,
 );
 
-export const selectLoginUser: Selector<State, UserI> = createSelector(
-  selectLogin,
-  ({ user }) => user,
+export const selectLoginErrorMsg: Selector<State, string> = createSelector(
+  selectLoginReducer,
+  ({ errorMsg }) => errorMsg,
 );
