@@ -1,25 +1,22 @@
 import { createReducerFunction, ImmerReducer } from 'immer-reducer';
 
-export interface ILoginState {
+export interface IRestoreAuthState {
   isPending: boolean;
   isResolved: boolean;
   isRejected: boolean;
-  errorMsg: string;
 }
 
-const initialState: ILoginState = {
+const initialState: IRestoreAuthState = {
   isPending: false,
   isResolved: false,
   isRejected: false,
-  errorMsg: '',
 };
 
-export class LoginReducer extends ImmerReducer<ILoginState> {
+export class RestoreAuthReducer extends ImmerReducer<IRestoreAuthState> {
   public setIsPending() {
     this.draftState.isPending = true;
     this.draftState.isResolved = false;
     this.draftState.isRejected = false;
-    this.draftState.errorMsg = '';
   }
 
   public setIsResolved() {
@@ -31,15 +28,6 @@ export class LoginReducer extends ImmerReducer<ILoginState> {
     this.draftState.isPending = false;
     this.draftState.isRejected = true;
   }
-
-  public setErrorMsg(msg?: string) {
-    if (typeof msg === 'string') {
-      this.draftState.errorMsg = msg;
-      return;
-    }
-
-    this.draftState.errorMsg = 'Something went wrong :(';
-  }
 }
 
-export default createReducerFunction(LoginReducer, initialState);
+export default createReducerFunction(RestoreAuthReducer, initialState);

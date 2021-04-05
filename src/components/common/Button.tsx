@@ -86,7 +86,7 @@ const ButtonStyled = styled.button<{ animation: Keyframes, customStyled: CustomS
   text-decoration: none;
   padding: 0 12px;
   border: none;
-  background: ${({ theme }) => (theme.palette.blue)};
+  background: ${({ theme }) => (theme.palette.primary)};
   border-radius: 4px;
   font-size: 18px;
   text-align: center;
