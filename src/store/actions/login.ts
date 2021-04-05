@@ -83,6 +83,38 @@ export const uploadAvatarAsync = (file: File): AsyncAction => async (dispatch, _
   }
 };
 
+export const getUsersAsync = (): AsyncAction => async (dispatch, _, { mainApi }) => {
+  try {
+    dispatch(loginActions.setIsPending());
+
+    const users = await mainApi.getUsers();
+
+    console.log(users);
+
+    dispatch(loginActions.setIsResolved());
+    dispatch(userActions.setUserAvatar('userData'));
+  } catch (e) {
+    dispatch(loginActions.setErrorMsg(e.message));
+    dispatch(loginActions.setIsRejected());
+  }
+};
+
+export const postUserAsync = (): AsyncAction => async (dispatch, _, { mainApi }) => {
+  try {
+    dispatch(loginActions.setIsPending());
+
+    const user = { username: 'new' };
+
+    await mainApi.postUser(user);
+
+    dispatch(loginActions.setIsResolved());
+    dispatch(userActions.setUserAvatar('userData'));
+  } catch (e) {
+    dispatch(loginActions.setErrorMsg(e.message));
+    dispatch(loginActions.setIsRejected());
+  }
+};
+
 export const saveTokens = async (user: firebase.User | null) => {
   const tokens = Tokens.getInstance();
 

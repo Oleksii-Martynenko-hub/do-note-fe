@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development PORT=3001 webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack",
+    "build": "cross-env NODE_ENV=production webpack && netlify-lambda build server",
     "server": "node .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
   },
@@ -31,7 +31,12 @@
     "redux-thunk": "2.3.0",
     "reselect": "4.0.0",
     "styled-components": "5.2.0",
-    "styled-normalize": "8.0.7"
+    "styled-normalize": "8.0.7",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "netlify-lambda": "^2.0.3",
+    "nodemon": "^2.0.7",
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "@types/copy-webpack-plugin": "6.0.0",
