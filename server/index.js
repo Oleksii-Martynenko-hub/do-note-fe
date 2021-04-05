@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 router.post('/add-user', (req, res, next) => {
   body.users.push(req.body.username);
   fs.writeFileSync('body.json', JSON.stringify(body, null, 2));
+  res.status(201).send(req.body);
 });
 
 router.get('/users', (req, res, next) => res.send(body));
