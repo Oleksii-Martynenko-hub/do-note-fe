@@ -19,6 +19,7 @@ import restoreAuthReducer from '@/store/reducers/restore-auth';
 
 import { UserActions } from '@/store/actions/user';
 import userReducer from '@/store/reducers/user';
+import MainApi from '@/api/MainApi';
 
 export const history = createBrowserHistory();
 
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
 
 export const api = {
   firebaseApi: FirebaseApi.getInstance(),
+  mainApi: MainApi.getInstance(),
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

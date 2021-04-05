@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import { signInAsync, signUpAsync, uploadAvatarAsync } from '@/store/actions/login';
+import { signInAsync, signUpAsync, uploadAvatarAsync, getUsersAsync, postUserAsync } from '@/store/actions/login';
 import { selectIsLoginPending, selectIsLoginRejected, selectLoginErrorMsg } from '@/store/selectors/login';
 import { selectIsLoggedIn, selectUserAvatar } from '@/store/selectors/user';
 import { selectIsRestoreAuthPending } from '@/store/selectors/restore-auth';
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     if (userAvatar) console.log(userAvatar);
-  }, [userAvatar])
+  }, [userAvatar]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -46,6 +46,14 @@ const Login: React.FC = () => {
       return;
     }
     dispatch(signInAsync(email, password));
+  };
+
+  const get = () => {
+    dispatch(getUsersAsync());
+  };
+
+  const post = () => {
+    dispatch(postUserAsync());
   };
 
   const setAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,10 +131,10 @@ const Login: React.FC = () => {
             new account
           </h3>
 
-          <Btn isLoading={isDisabled}>
+          <Btn onClick={get} isLoading={isDisabled}>
             Log in with Google
           </Btn>
-          <Btn isLoading={isDisabled}>
+          <Btn onClick={post} isLoading={isDisabled}>
             Guest
           </Btn>
 
