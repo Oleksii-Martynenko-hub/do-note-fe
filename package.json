@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development PORT=3001 webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env NODE_ENV=production webpack",
+    "start": "node index.js",
     "server": "node .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
   },
@@ -17,6 +17,7 @@
     "axios": "^0.21.1",
     "connected-react-router": "6.8.0",
     "cross-env": "^7.0.3",
+    "express": "^4.17.1",
     "feather-icons": "^4.28.0",
     "firebase": "^8.3.0",
     "history": "4.10.1",
@@ -65,5 +66,8 @@
     "webpack": "5.1.1",
     "webpack-cli": "3.3.12",
     "webpack-dev-server": "3.11.0"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
