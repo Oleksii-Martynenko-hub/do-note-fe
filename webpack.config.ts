@@ -48,8 +48,13 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({ template: './html/index.html' }),
     new CopyWebpackPlugin({ patterns: [{ from: 'assets', to: 'assets', noErrorOnMissing: true }] }),
-    new Dotenv(process.env.NODE_ENV === 'development' ? {
+    new Dotenv({ 
       path: './.env',
-    } : {}),
+      safe: true,
+      allowEmptyValues: true,
+      systemvars: true,
+      silent: true,
+      defaults: false
+    }),
   ],
 } as Configuration;
