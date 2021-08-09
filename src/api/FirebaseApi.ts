@@ -83,8 +83,8 @@ class FirebaseApi {
     }
   };
 
-  public postAvatar = async (file: File) => {    
-    const upload = storage.child(STORAGE.AVATARS).child('avatar').put(file)
+  public postAvatar = async (file: File) => {
+    const upload = storage.child(STORAGE.AVATARS).child('avatar').put(file);
   };
 
   public addNotes = async () => {

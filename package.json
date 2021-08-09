@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development PORT=3001 webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack && netlify-lambda build server",
+    "build": "cross-env NODE_ENV=production webpack",
     "server": "node .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
   },
