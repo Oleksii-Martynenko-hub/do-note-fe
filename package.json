@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development PORT=3001 webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
-    "push-to-heroku": "git add . && git commit -am 'commit' && git push heroku master",
-    "deploy": "npm run build && npm run push-to-heroku",
     "start": "node index.js",
-    "server": "node .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
   },
   "keywords": [],
