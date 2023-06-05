@@ -50,6 +50,11 @@ export default {
     new CopyWebpackPlugin({ patterns: [{ from: 'assets', to: 'assets', noErrorOnMissing: true }] }),
     new Dotenv({
       path: './.env',
+      safe: true,
+      allowEmptyValues: true,
+      systemvars: true,
+      silent: true,
+      defaults: false,
     }),
   ],
 } as Configuration;
